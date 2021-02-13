@@ -1,6 +1,6 @@
 package model;
 
-public class Medication extends Animal{
+public class Medication extends Animal {
     protected String medication;
     protected String dose;
     protected Animal.MedicationFrequency frequency;
@@ -12,7 +12,5 @@ public class Medication extends Animal{
         this.dose = dose + "";
         this.frequency = frequency;
     }
-
-
 
 }

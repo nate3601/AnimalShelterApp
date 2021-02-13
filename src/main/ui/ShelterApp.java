@@ -2,7 +2,6 @@ package ui;
 
 import model.Animal;
 import model.AnimalShelter;
-import model.Medication;
 
 import java.util.Scanner;
 
@@ -19,7 +18,7 @@ public class ShelterApp {
     //EFFECTS: processes user input
     private void runShelter() {
         boolean keepGoing = true;
-        String command = null;
+        String command;
 
         init();
 
@@ -46,7 +45,7 @@ public class ShelterApp {
     //EFFECTS: processes user command
     private void processCommand(String command) {
         if (command.equals("r")) {
-            doRegistation();
+            doRegistration();
         } else if (command.equals("s")) {
             doSelection();
         } else {
@@ -74,14 +73,19 @@ public class ShelterApp {
     }
 
     private void processActionCommand(String next, Animal selectedAnimal) {
-        if (next.equals("c")) {
-            System.out.println(selectedAnimal.showCharacteristics());
-        } else if (next.equals("l")) {
-            doLogMedication(selectedAnimal);
-        } else if (next.equals("a")) {
-            doAdoptAnimal(selectedAnimal);
-        } else {
-            System.out.println("Selection not valid, try again:");
+        switch (next) {
+            case "c":
+                System.out.println(selectedAnimal.showCharacteristics());
+                break;
+            case "l":
+                doLogMedication(selectedAnimal);
+                break;
+            case "a":
+                doAdoptAnimal(selectedAnimal);
+                break;
+            default:
+                System.out.println("Selection not valid, try again:");
+                break;
         }
     }
 
@@ -113,10 +117,8 @@ public class ShelterApp {
         }
     }
 
-    private void doViewResidents() {
-    }
 
-    private void doRegistation() {
+    private void doRegistration() {
         Animal animal = new Animal();
         System.out.println("Enter the animal's name: ");
         animal.setName(input.next());

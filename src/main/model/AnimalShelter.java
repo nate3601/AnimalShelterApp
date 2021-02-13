@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 public class AnimalShelter {
-    private ArrayList<Animal> residents;
+    private final ArrayList<Animal> residents;
 
     //EFFECTS: constructs a new animal shelter object
     public AnimalShelter() {
@@ -42,7 +42,7 @@ public class AnimalShelter {
     public String listOfResidents() {
         String list = "";
         for (Animal a : residents) {
-            list =  list + "\n" + residents.indexOf(a) + " -> " + a.getName();
+            list =  list.concat("\n" + residents.indexOf(a) + " -> " + a.getName());
         }
         return list;
     }

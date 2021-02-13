@@ -12,7 +12,6 @@ public class Animal {
 
     private Object activityLevel;
     private Object dietSize;
-    private Object medicationFrequency;
 
 
     public enum ActivityLevel {
@@ -35,7 +34,7 @@ public class Animal {
 
     //EFFECTS: constructs a new animal object
     public Animal() {
-        medications = new ArrayList<Medication>();
+        medications = new ArrayList<>();
     }
 
     //getters
@@ -98,7 +97,8 @@ public class Animal {
             return "none.";
         } else {
             for (Medication m : medications) {
-                list = list + m.medication + " " + m.dose + "mg, " + convertMedicationFrequency(m.frequency) + ". ";
+                list = list.concat(m.medication
+                        + " " + m.dose + "mg, " + convertMedicationFrequency(m.frequency) + ". ");
             }
         }
         list = list.substring(0, list.length() - 1);
@@ -107,14 +107,13 @@ public class Animal {
 
     //EFFECTS: prints out the characteristics of this animal
     public String showCharacteristics() {
-        String str = "Species: " + this.species + System.lineSeparator()
+        return "Species: " + this.species + System.lineSeparator()
                 + "Breed: " + this.breed + System.lineSeparator()
                 + "Name: " + this.name + System.lineSeparator()
                 + "Age: " + this.age + System.lineSeparator()
                 + "Diet Size: " + convertDietSize(this.getDietSize()) + System.lineSeparator()
                 + "Activity Level: " + convertActivityLevel(this.getActivityLevel()) + System.lineSeparator()
                 + "Medications: " + this.listMedications();
-        return str;
     }
 
 
@@ -155,11 +154,6 @@ public class Animal {
             default:
                 return "none";
         }
-    }
-
-    //EFFECTS: returns the size of medications list
-    public int size() {
-        return medications.size();
     }
 
 }
