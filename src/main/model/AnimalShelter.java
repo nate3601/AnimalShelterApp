@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-
+//represents an animal shelter with a list of current animal residents
 public class AnimalShelter {
     private final ArrayList<Animal> residents;
 
@@ -35,10 +35,12 @@ public class AnimalShelter {
         }
     }
 
+    //EFFECTS: returns the number of residents currently in the shelter
     public int size() {
         return residents.size();
     }
 
+    //EFFECTS: returns a string listing out the current residents by their position in the list
     public String listOfResidents() {
         String list = "";
         for (Animal a : residents) {
@@ -47,6 +49,7 @@ public class AnimalShelter {
         return list;
     }
 
+    //EFFECTS: returns the animal found at position n in the list of residents
     public Animal selectAnimalAt(int n) {
         Animal dummy = new Animal();
         for (Animal a : residents) {

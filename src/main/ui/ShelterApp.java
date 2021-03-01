@@ -36,6 +36,7 @@ public class ShelterApp {
         System.out.println("\nGoodbye.");
     }
 
+    //EFFECTS: initializes the scanner and new animal shelter
     public void init() {
         input = new Scanner(System.in);
         shelter = new AnimalShelter();
@@ -53,6 +54,8 @@ public class ShelterApp {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: conducts a selection request
     private void doSelection() {
         if (shelter.size() == 0) {
             System.out.println("There are no residents currently in the shelter.");
@@ -65,6 +68,8 @@ public class ShelterApp {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: conducts a action request
     private void doActions(Animal selectedAnimal) {
         System.out.println("c -> view characteristics");
         System.out.println("l -> log medication");
@@ -72,6 +77,8 @@ public class ShelterApp {
         processActionCommand(input.next(), selectedAnimal);
     }
 
+    //MODIFIES: this
+    //EFFECTS: processes action command
     private void processActionCommand(String next, Animal selectedAnimal) {
         switch (next) {
             case "c":
@@ -89,11 +96,15 @@ public class ShelterApp {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: conducts an adoption request
     private void doAdoptAnimal(Animal selectedAnimal) {
         shelter.adoptAnimal(selectedAnimal);
         System.out.println(selectedAnimal.getName() + " has been adopted!");
     }
 
+    //MODIFIES: this
+    //EFFECTS: conducts a log medication request
     private void doLogMedication(Animal selectedAnimal) {
         System.out.println("Enter medication name: ");
         String medication = input.next();
@@ -107,6 +118,7 @@ public class ShelterApp {
         System.out.println("Medication has been logged!");
     }
 
+    //EFFECTS: converts medication frequency
     private Animal.MedicationFrequency chooseMedicationFrequency(int n) {
         if (n == 1) {
             return Animal.MedicationFrequency.ONCE_DAILY;
@@ -117,32 +129,40 @@ public class ShelterApp {
         }
     }
 
-
+    //MODIFIES: this
+    //EFFECTS: conducts a registration request
     private void doRegistration() {
         Animal animal = new Animal();
         System.out.println("Enter the animal's name: ");
         animal.setName(input.next());
+
         System.out.println("Enter the animal's species: ");
         animal.setSpecies(input.next());
+
         System.out.println("Enter the animal's breed (n/a if not applicable): ");
         animal.setBreed(input.next());
+
         System.out.println("Enter the animal's age:");
         animal.setAge(input.nextInt());
+
         System.out.println("\nChoose number corresponding to animal's activity level: ");
         System.out.println("\t1 -> Immobilized");
         System.out.println("\t2 -> Recovering");
         System.out.println("\t3 -> Low Energy");
         System.out.println("\t4 -> High Energy");
         animal.setActivityLevel(chooseActivityLevel(input.nextInt()));
+
         System.out.println("\nChoose number corresponding to animal's diet size: ");
         System.out.println("\t1 -> Small");
         System.out.println("\t2 -> Medium");
         System.out.println("\t3 -> Large");
         animal.setDietSize(chooseDietSize(input.nextInt()));
+
         shelter.registerAnimal(animal);
         System.out.println(animal.getName() + " has been registered!");
     }
 
+    //EFFECTS: converts n to diet size
     private Animal.DietSize chooseDietSize(int n) {
         if (n == 1) {
             return Animal.DietSize.SMALL_DIET;
@@ -155,6 +175,7 @@ public class ShelterApp {
         }
     }
 
+    //EFFECTS: converts n to activity level
     private Animal.ActivityLevel chooseActivityLevel(int n) {
         if (n == 1) {
             return Animal.ActivityLevel.IMMOBILIZED;

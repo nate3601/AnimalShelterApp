@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+//represents an Animal that has a name, species, breed, age, list of medications, activity level, and diet size
 public class Animal {
     private String name;
     private String species;
@@ -97,7 +98,7 @@ public class Animal {
             return "none.";
         } else {
             for (Medication m : medications) {
-                list = list.concat(m.medication
+                list = list.concat(m.name
                         + " " + m.dose + "mg, " + convertMedicationFrequency(m.frequency) + ". ");
             }
         }
@@ -116,7 +117,7 @@ public class Animal {
                 + "Medications: " + this.listMedications();
     }
 
-
+    //EFFECTS: converts enumerated ActivityLevel to a string
     public String convertActivityLevel(ActivityLevel energyLevel) {
         switch (energyLevel) {
             case IMMOBILIZED:
@@ -132,6 +133,7 @@ public class Animal {
         }
     }
 
+    //EFFECTS: converts enumerated DietSize to a string
     public String convertDietSize(DietSize dietSize) {
         switch (dietSize) {
             case SMALL_DIET:
@@ -145,6 +147,7 @@ public class Animal {
         }
     }
 
+    //EFFECTS: converts enumerated MedicationFrequency to a string
     public String convertMedicationFrequency(MedicationFrequency mf) {
         switch (mf) {
             case ONCE_DAILY:

@@ -24,5 +24,7 @@ specifying its characteristics
 - as a user, I want to be able to unregister an animal once they are adopted
 - as a user, I want to be able to log medical conditions, and necessary medications
 - as a user, I want to be able to select an animal and view it in detail
+- as a user, I want to be able to save my animal shelter to file
+- as a user, I want to be able to load my animal shelter from file
 
  
