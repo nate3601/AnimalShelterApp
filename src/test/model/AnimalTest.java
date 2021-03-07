@@ -81,6 +81,11 @@ public class AnimalTest {
         assertEquals(testAnimal.convertActivityLevel(Animal.ActivityLevel.RECOVERING), "Recovering");
         assertEquals(testAnimal.convertActivityLevel(Animal.ActivityLevel.LOW_ENERGY), "Low Energy");
         assertEquals(testAnimal.convertActivityLevel(Animal.ActivityLevel.HIGH_ENERGY), "High Energy");
+        assertEquals(testAnimal.convertActivityLevel("Immobilized"), Animal.ActivityLevel.IMMOBILIZED);
+        assertEquals(testAnimal.convertActivityLevel("Recovering"), Animal.ActivityLevel.RECOVERING);
+        assertEquals(testAnimal.convertActivityLevel("Low Energy"), Animal.ActivityLevel.LOW_ENERGY);
+        assertEquals(testAnimal.convertActivityLevel("High Energy"), Animal.ActivityLevel.HIGH_ENERGY);
+
     }
 
     @Test
@@ -89,6 +94,9 @@ public class AnimalTest {
         assertEquals(testAnimal.convertDietSize(Animal.DietSize.SMALL_DIET), "Small");
         assertEquals(testAnimal.convertDietSize(Animal.DietSize.MEDIUM_DIET), "Medium");
         assertEquals(testAnimal.convertDietSize(Animal.DietSize.LARGE_DIET), "Large");
+        assertEquals(testAnimal.convertDietSize("Small"), Animal.DietSize.SMALL_DIET);
+        assertEquals(testAnimal.convertDietSize("Medium"), Animal.DietSize.MEDIUM_DIET);
+        assertEquals(testAnimal.convertDietSize("Large"), Animal.DietSize.LARGE_DIET);
     }
 
     @Test
@@ -96,5 +104,7 @@ public class AnimalTest {
         //check that calling each of the styles works
         assertEquals(testAnimal.convertMedicationFrequency(Animal.MedicationFrequency.ONCE_DAILY), "Once Daily");
         assertEquals(testAnimal.convertMedicationFrequency(Animal.MedicationFrequency.TWICE_DAILY), "Twice Daily");
+        assertEquals(testAnimal.convertMedicationFrequency("Once Daily"), Animal.MedicationFrequency.ONCE_DAILY);
+        assertEquals(testAnimal.convertMedicationFrequency("Twice Daily"), Animal.MedicationFrequency.TWICE_DAILY);
     }
 }
