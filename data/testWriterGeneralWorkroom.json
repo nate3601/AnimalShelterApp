@@ -1,0 +1,31 @@
+{"residents": [
+    {
+        "dietSize": "MEDIUM_DIET",
+        "species": "Dog",
+        "medications": [
+            {
+                "dose": "2",
+                "name": "testMedication1",
+                "frequency": "Once Daily"
+            },
+            {
+                "dose": "5",
+                "name": "testMedication2",
+                "frequency": "Twice Daily"
+            }
+        ],
+        "name": "Tintin",
+        "breed": "Black Lab",
+        "age": 11,
+        "activityLevel": "High Energy"
+    },
+    {
+        "dietSize": "SMALL_DIET",
+        "species": "Cat",
+        "medications": [],
+        "name": "Marley",
+        "breed": "idk",
+        "age": 12,
+        "activityLevel": "Immobilized"
+    }
+]}

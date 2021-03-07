@@ -2,12 +2,19 @@ package ui;
 
 import model.Animal;
 import model.AnimalShelter;
+import persistence.JsonWriter;
+import persistence.JsonReader;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ShelterApp {
+    private static final String JSON_STORE = "./data/animalshelter.json";
     private AnimalShelter shelter;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: runs the shelter application
     public ShelterApp() {
@@ -40,6 +47,8 @@ public class ShelterApp {
     public void init() {
         input = new Scanner(System.in);
         shelter = new AnimalShelter();
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
     }
 
     //MODIFIES: this
@@ -49,10 +58,40 @@ public class ShelterApp {
             doRegistration();
         } else if (command.equals("s")) {
             doSelection();
+        } else if (command.equals("f")) {
+            saveAnimalShelter();
+        } else if (command.equals("l")) {
+            loadAnimalShelter();
         } else {
             System.out.println("Selection not valid, try again:");
         }
     }
+
+    // CITATION: got code from JsonSerializationDemo repository
+    //EFFECTS: saves shelter to file
+    private void saveAnimalShelter() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(shelter);
+            jsonWriter.close();
+            System.out.println("Saved the animal shelter to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // CITATION: got code from JsonSerializationDemo repository
+    // MODIFIES: this
+    // EFFECTS: loads shelter from file
+    private void loadAnimalShelter() {
+        try {
+            shelter = jsonReader.read();
+            System.out.println("Loaded the animal shelter from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
 
     //MODIFIES: this
     //EFFECTS: conducts a selection request
@@ -195,6 +234,8 @@ public class ShelterApp {
         System.out.println("\nSelect from:");
         System.out.println("\tr -> register new animal");
         System.out.println("\ts -> select an existing resident to perform actions on");
+        System.out.println("\tf -> save animal shelter to file");
+        System.out.println("\tl -> load animal shelter from file");
         System.out.println("\tq -> quit");
     }
 }

@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 //represents an Animal that has a name, species, breed, age, list of medications, activity level, and diet size
@@ -11,9 +14,8 @@ public class Animal {
 
     protected ArrayList<Medication> medications;
 
-    private Object activityLevel;
-    private Object dietSize;
-
+    private ActivityLevel activityLevel;
+    private DietSize dietSize;
 
     public enum ActivityLevel {
         IMMOBILIZED,
@@ -42,17 +44,33 @@ public class Animal {
     public String getName() {
         return this.name;
     }
-//
-//    public String getSpecies() {
-//        return this.species;
-//    }
+
+    public String getSpecies() {
+        return this.species;
+    }
+
+    public String getBreed() {
+        return this.breed;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+
+    public String getMedicationNames() {
+        String list = "";
+        for (Medication m : medications) {
+            list = list.concat(m.name + ", ");
+        }
+        return list;
+    }
 
     public ActivityLevel getActivityLevel() {
         return (ActivityLevel) this.activityLevel;
     }
 
     public DietSize getDietSize() {
-        return (DietSize) this.dietSize;
+        return this.dietSize;
     }
 
 //    public MedicationFrequency getMedicationFrequency() {
@@ -133,6 +151,20 @@ public class Animal {
         }
     }
 
+    //EFFECTS: converts a string to an enumerated ActivityLevel
+    public ActivityLevel convertActivityLevel(String energyLevel) {
+        switch (energyLevel) {
+            case "Immobilized":
+                return ActivityLevel.IMMOBILIZED;
+            case "Recovering":
+                return ActivityLevel.RECOVERING;
+            case "Low Energy":
+                return ActivityLevel.LOW_ENERGY;
+            default:
+                return ActivityLevel.HIGH_ENERGY;
+        }
+    }
+
     //EFFECTS: converts enumerated DietSize to a string
     public String convertDietSize(DietSize dietSize) {
         switch (dietSize) {
@@ -147,6 +179,18 @@ public class Animal {
         }
     }
 
+    //EFFECTS: converts a string to an enumerated DietSize
+    public DietSize convertDietSize(String dietSize) {
+        switch (dietSize) {
+            case "Small":
+                return DietSize.SMALL_DIET;
+            case "Medium":
+                return DietSize.MEDIUM_DIET;
+            default:
+                return DietSize.LARGE_DIET;
+        }
+    }
+
     //EFFECTS: converts enumerated MedicationFrequency to a string
     public String convertMedicationFrequency(MedicationFrequency mf) {
         switch (mf) {
@@ -157,6 +201,39 @@ public class Animal {
             default:
                 return "none";
         }
+    }
+
+    //EFFECTS: converts enumerated MedicationFrequency to a string
+    public MedicationFrequency convertMedicationFrequency(String mf) {
+        switch (mf) {
+            case "Once Daily":
+                return MedicationFrequency.ONCE_DAILY;
+            default:
+                return MedicationFrequency.TWICE_DAILY;
+        }
+    }
+
+    // CITATION: got code from JsonSerializationDemo repository
+    private JSONArray medicationsToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (Medication m : medications) {
+            jsonArray.put(m.toJson());
+        }
+        return jsonArray;
+    }
+
+    // CITATION: got code from JsonSerializationDemo repository
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("species", species);
+        json.put("breed", breed);
+        json.put("age", age);
+        json.put("medications", medicationsToJson());
+        json.put("activityLevel", convertActivityLevel(activityLevel));
+        json.put("dietSize", dietSize);
+
+        return json;
     }
 
 }

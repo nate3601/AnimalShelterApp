@@ -1,6 +1,10 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.List;
 
 //represents an animal shelter with a list of current animal residents
 public class AnimalShelter {
@@ -58,5 +62,25 @@ public class AnimalShelter {
             }
         }
         return dummy;
+    }
+
+    // CITATION: got code from JsonSerializationDemo repository
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("residents", residentsToJson());
+        return json;
+    }
+
+    // CITATION: got code from JsonSerializationDemo repository
+    private JSONArray residentsToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (Animal a : residents) {
+            jsonArray.put(a.toJson());
+        }
+        return jsonArray;
+    }
+
+    public List<Animal> getResidents() {
+        return this.residents;
     }
 }
