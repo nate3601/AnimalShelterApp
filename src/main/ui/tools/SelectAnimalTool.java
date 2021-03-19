@@ -1,14 +1,14 @@
 package ui.tools;
 
-import ui.GUI;
+import ui.AnimalShelterApp;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SelectAnimalTool extends Tool {
-    public SelectAnimalTool(GUI gui, JComponent parent) {
-        super(gui, parent);
+    public SelectAnimalTool(AnimalShelterApp animalShelterApp, JComponent parent) {
+        super(animalShelterApp, parent);
     }
 
     @Override
@@ -19,7 +19,7 @@ public class SelectAnimalTool extends Tool {
     @Override
     protected void createButton(JComponent parent) {
         button = new JButton("Select Animal");
-        addtoParent(parent);
+        addToParent(parent);
     }
 
     private class SelectAnimalToolClickHandler implements ActionListener {
@@ -29,7 +29,6 @@ public class SelectAnimalTool extends Tool {
         //          called by the framework when the tool is clicked
         @Override
         public void actionPerformed(ActionEvent e) {
-            gui.setActiveTool(SelectAnimalTool.this);
         }
     }
 }

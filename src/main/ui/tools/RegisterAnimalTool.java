@@ -1,14 +1,18 @@
 package ui.tools;
 
-import ui.GUI;
+import ui.AnimalShelterApp;
+import ui.tools.panels.RegisterAnimalPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class RegisterAnimalTool extends Tool {
-    public RegisterAnimalTool(GUI gui, JComponent parent) {
-        super(gui, parent);
+
+    private RegisterAnimalPanel panel;
+
+    public RegisterAnimalTool(AnimalShelterApp animalShelterApp, JComponent parent) {
+        super(animalShelterApp, parent);
     }
 
     @Override
@@ -19,8 +23,9 @@ public class RegisterAnimalTool extends Tool {
     @Override
     protected void createButton(JComponent parent) {
         button = new JButton("Register Animal");
-        addtoParent(parent);
+        addToParent(parent);
     }
+
 
     private class RegisterAnimalToolClickHandler implements ActionListener {
 
@@ -29,7 +34,8 @@ public class RegisterAnimalTool extends Tool {
         //          called by the framework when the tool is clicked
         @Override
         public void actionPerformed(ActionEvent e) {
-            gui.setActiveTool(RegisterAnimalTool.this);
+            panel.processAnimalRegistration();
         }
     }
+
 }

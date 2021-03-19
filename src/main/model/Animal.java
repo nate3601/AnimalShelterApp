@@ -57,6 +57,7 @@ public class Animal {
         return this.age;
     }
 
+    // EFFECTS:
     public String getMedicationNames() {
         String list = "";
         for (Medication m : medications) {
