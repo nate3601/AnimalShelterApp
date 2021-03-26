@@ -1,6 +1,9 @@
 package ui.tools.panels;
 
+import model.Animal;
+import model.AnimalShelter;
 import ui.AnimalShelterApp;
+import ui.tools.panels.registersubpanels.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,50 +11,80 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
-public class RegisterAnimalPanel extends JPanel implements ActionListener {
+import static java.lang.Integer.parseInt;
+import static ui.AnimalShelterApp.TOOL_AREA;
 
-    HashMap<String, JTextField> registrationInfo = new HashMap<>();
-    String[] labels = {"Name: ",
-            "Species: ",
-            "Breed (n/a if not applicable): ",
-            "Address: ",
-            "Age: ",
-    };
+public class RegisterAnimalPanel extends JPanel {
+    AnimalShelter shelter;
+    Animal animalToRegister;
+    AnimalShelterApp animalShelterApp;
 
-    public RegisterAnimalPanel(AnimalShelterApp animalShelterApp, JComponent parent) {
+    JPanel cards;
 
-    }
-    
-    public void setRegistrationInfoLabels() {
-        for (String label : labels) {
-            registrationInfo.put(label, new JTextField());
-        }
-    }
+    NameInfoPanel nameInfoPanel;
+    SpeciesInfoPanel speciesInfoPanel;
+    BreedInfoPanel breedInfoPanel;
+    AgeInfoPanel ageInfoPanel;
+    DietSizePanel dietSizePanel;
+    ActivityLevelPanel activityLevelPanel;
 
-    public void processAnimalRegistration() {
-        initializeGraphics();
+    public RegisterAnimalPanel(AnimalShelterApp animalShelterApp) {
+        this.animalShelterApp = animalShelterApp;
     }
 
-    public void initializeGraphics() {
-        setLayout(new SpringLayout());
-        setMinimumSize(new Dimension(WIDTH, HEIGHT));
+    public void processAnimalRegistration(AnimalShelter shelter, JPanel cards) {
+        this.cards = cards;
+        this.shelter = shelter;
+        this.animalToRegister = new Animal();
         createRegistrationTools();
-        setVisible(true);
     }
 
     public void createRegistrationTools() {
-        //Create and populate the panel.
-        for (String label : registrationInfo.keySet()) {
-            JLabel l = new JLabel(label, JLabel.TRAILING);
-            this.add(l);
-            JTextField textField = new JTextField(20);
-            l.setLabelFor(textField);
-            this.add(textField);
+        JLabel title = new JLabel("Fill out animal's information (press enter after each text input): ");
+        add(title);
+
+        nameInfoPanel = new NameInfoPanel(animalShelterApp, this);
+        add(nameInfoPanel);
+
+        speciesInfoPanel = new SpeciesInfoPanel(animalShelterApp, this);
+        add(speciesInfoPanel);
+
+        breedInfoPanel = new BreedInfoPanel(animalShelterApp, this);
+        add(breedInfoPanel);
+
+        ageInfoPanel = new AgeInfoPanel(animalShelterApp, this);
+        add(breedInfoPanel);
+
+        dietSizePanel = new DietSizePanel(animalShelterApp, this);
+        add(dietSizePanel);
+
+        activityLevelPanel = new ActivityLevelPanel(animalShelterApp, this);
+        add(activityLevelPanel);
+
+        JButton registerButton = new JButton("Register animal");
+        add(registerButton);
+        registerButton.addActionListener(new RegisterButtonClickHandler());
+    }
+
+    private class RegisterButtonClickHandler implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            animalToRegister.setName(nameInfoPanel.getInput());
+            animalToRegister.setSpecies(speciesInfoPanel.getInput());
+            animalToRegister.setBreed(breedInfoPanel.getInput());
+            try {
+                animalToRegister.setAge(parseInt(ageInfoPanel.getInput()));
+            } catch (NumberFormatException exception) {
+                animalToRegister.setAge(0);
+            }
+            animalToRegister.setDietSize(dietSizePanel.getSelection());
+            animalToRegister.setActivityLevel(activityLevelPanel.getSelection());
+
+            shelter.registerAnimal(animalToRegister);
+
+            CardLayout cl = (CardLayout)(cards.getLayout());
+            cl.show(cards, TOOL_AREA);
         }
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 }

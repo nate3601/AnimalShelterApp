@@ -1,4 +1,4 @@
-package ui.tools;
+package ui.tools.buttons;
 
 import model.AnimalShelter;
 import persistence.JsonReader;
@@ -6,14 +6,16 @@ import persistence.JsonWriter;
 import ui.AnimalShelterApp;
 
 import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.util.Scanner;
 
-public abstract class Tool extends AnimalShelterApp {
+public abstract class Button extends JButton {
 
-    protected JButton button;
     protected AnimalShelterApp animalShelterApp;
+    protected JPanel parent;
 
-    public Tool(AnimalShelterApp animalShelterApp, JComponent parent) {
+    public Button(AnimalShelterApp animalShelterApp, JPanel parent) {
+        this.parent = parent;
         this.animalShelterApp = animalShelterApp;
         createButton(parent);
         addToParent(parent);
@@ -22,10 +24,6 @@ public abstract class Tool extends AnimalShelterApp {
     }
 
     public void initializeFields() {
-        input = new Scanner(System.in);
-        shelter = new AnimalShelter();
-        jsonWriter = new JsonWriter(JSON_STORE);
-        jsonReader = new JsonReader(JSON_STORE);
     }
 
     // EFFECTS: adds a listener for this tool
@@ -33,11 +31,11 @@ public abstract class Tool extends AnimalShelterApp {
 
     // MODIFIES: parent
     // EFFECTS:  adds the given button to the parent component
-    public void addToParent(JComponent parent) {
-        parent.add(button);
+    public void addToParent(JPanel parent) {
+        parent.add(this);
     }
 
-    // EFFECTS: creates button to activate tool
-    protected abstract void createButton(JComponent parent);
+    // EFFECTS: creates button
+    protected abstract void createButton(JPanel parent);
 
 }
