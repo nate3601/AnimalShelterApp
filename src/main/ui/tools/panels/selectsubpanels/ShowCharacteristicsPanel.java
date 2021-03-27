@@ -29,7 +29,7 @@ public class ShowCharacteristicsPanel extends JPanel {
         add(title);
         JLabel name = new JLabel("Name: " + animal.getName());
         add(name);
-        JLabel species = new JLabel("Species: " + animal.getSpecies());
+        JLabel species = new JLabel("Species: " + animal.convertSpecies(animal.getSpecies()));
         add(species);
         JLabel breed = new JLabel("Breed: " + animal.getBreed());
         add(breed);

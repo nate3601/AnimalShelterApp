@@ -47,7 +47,7 @@ public class SelectAnimalPanel extends JPanel {
     }
 
     private void createAnimalPanels() {
-        setLayout(new FlowLayout());
+        setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
         JLabel title = new JLabel("Animals currently in shelter: ");
         add(title);
 

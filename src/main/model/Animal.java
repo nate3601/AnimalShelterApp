@@ -5,17 +5,25 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static model.Animal.Species.CAT;
+import static model.Animal.Species.DOG;
+
 //represents an Animal that has a name, species, breed, age, list of medications, activity level, and diet size
 public class Animal {
     private String name;
-    private String species;
     private String breed;
     private int age;
 
     protected ArrayList<Medication> medications;
 
+    private Species species;
     private ActivityLevel activityLevel;
     private DietSize dietSize;
+
+    public enum Species {
+        DOG,
+        CAT
+    }
 
     public enum ActivityLevel {
         IMMOBILIZED,
@@ -45,7 +53,7 @@ public class Animal {
         return this.name;
     }
 
-    public String getSpecies() {
+    public Species getSpecies() {
         return this.species;
     }
 
@@ -83,7 +91,7 @@ public class Animal {
         this.name = name;
     }
 
-    public void setSpecies(String species) {
+    public void setSpecies(Species species) {
         this.species = species;
     }
 
@@ -127,7 +135,7 @@ public class Animal {
 
     //EFFECTS: prints out the characteristics of this animal
     public String showCharacteristics() {
-        return "Species: " + this.species + System.lineSeparator()
+        return "Species: " + convertSpecies(this.getSpecies()) + System.lineSeparator()
                 + "Breed: " + this.breed + System.lineSeparator()
                 + "Name: " + this.name + System.lineSeparator()
                 + "Age: " + this.age + System.lineSeparator()
@@ -214,6 +222,22 @@ public class Animal {
         }
     }
 
+    public String convertSpecies(Species species) {
+        switch (species) {
+            case DOG: return "Dog";
+            case CAT: return "Cat";
+            default: return "none";
+        }
+    }
+
+    public Species convertSpecies(String species) {
+        switch (species) {
+            case "Cat": return CAT;
+            case "Dog": return DOG;
+            default : return null;
+        }
+    }
+
     // CITATION: got code from JsonSerializationDemo repository
     private JSONArray medicationsToJson() {
         JSONArray jsonArray = new JSONArray();
@@ -227,12 +251,12 @@ public class Animal {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
-        json.put("species", species);
+        json.put("species", convertSpecies(species));
         json.put("breed", breed);
         json.put("age", age);
         json.put("medications", medicationsToJson());
         json.put("activityLevel", convertActivityLevel(activityLevel));
-        json.put("dietSize", dietSize);
+        json.put("dietSize", convertDietSize(dietSize));
 
         return json;
     }

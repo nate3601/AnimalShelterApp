@@ -14,7 +14,7 @@ public class AnimalTest {
         testAnimal.setName("TestName");
         testAnimal.setAge(11);
         testAnimal.setBreed("Black Lab");
-        testAnimal.setSpecies("Dog");
+        testAnimal.setSpecies(Animal.Species.DOG);
         testAnimal.setActivityLevel(Animal.ActivityLevel.HIGH_ENERGY);
         testAnimal.setDietSize(Animal.DietSize.MEDIUM_DIET);
     }

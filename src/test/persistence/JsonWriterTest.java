@@ -20,7 +20,7 @@ public class JsonWriterTest extends JsonTest {
         testAnimal.setName("Tintin");
         testAnimal.setAge(11);
         testAnimal.setBreed("Black Lab");
-        testAnimal.setSpecies("Dog");
+        testAnimal.setSpecies(Animal.Species.DOG);
         testAnimal.setActivityLevel(Animal.ActivityLevel.HIGH_ENERGY);
         testAnimal.setDietSize(Animal.DietSize.MEDIUM_DIET);
 
@@ -62,7 +62,7 @@ public class JsonWriterTest extends JsonTest {
         testAnimal2.setName("Marley");
         testAnimal2.setAge(12);
         testAnimal2.setBreed("idk");
-        testAnimal2.setSpecies("Cat");
+        testAnimal2.setSpecies(Animal.Species.CAT);
         testAnimal2.setActivityLevel(Animal.ActivityLevel.IMMOBILIZED);
         testAnimal2.setDietSize(Animal.DietSize.SMALL_DIET);
 
@@ -82,7 +82,7 @@ public class JsonWriterTest extends JsonTest {
             //check that animals are correct
             checkAnimal(residents.get(0),
                     "Tintin",
-                    "Dog",
+                    Animal.Species.DOG,
                     "Black Lab",
                     11,
                     "testMedication1, testMedication2, ",
@@ -90,7 +90,7 @@ public class JsonWriterTest extends JsonTest {
                     Animal.DietSize.LARGE_DIET);
             checkAnimal(residents.get(1),
                     "Marley",
-                    "Cat",
+                    Animal.Species.DOG,
                     "idk",
                     12,
                     "",

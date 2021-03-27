@@ -176,7 +176,7 @@ public class ShelterApp {
         animal.setName(input.next());
 
         System.out.println("Enter the animal's species: ");
-        animal.setSpecies(input.next());
+//        animal.setSpecies(input.next());
 
         System.out.println("Enter the animal's breed (n/a if not applicable): ");
         animal.setBreed(input.next());

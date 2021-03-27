@@ -64,7 +64,7 @@ public class JsonReader {
     private void addAnimal(AnimalShelter as, JSONObject jsonObject) {
         Animal animal = new Animal();
         animal.setName(jsonObject.getString("name"));
-        animal.setSpecies(jsonObject.getString("species"));
+        animal.setSpecies(animal.convertSpecies(jsonObject.getString("species")));
         animal.setBreed(jsonObject.getString("breed"));
         animal.setAge(jsonObject.getInt("age"));
 

@@ -44,7 +44,7 @@ public class JsonReaderTest extends JsonTest {
             //check that animals are correct
             checkAnimal(residents.get(0),
                     "Tintin",
-                    "Dog",
+                    Animal.Species.DOG,
                     "Black Lab",
                     11,
                     "testMedication1, testMedication2, ",
@@ -52,7 +52,7 @@ public class JsonReaderTest extends JsonTest {
                     Animal.DietSize.LARGE_DIET);
             checkAnimal(residents.get(1),
                     "Marley",
-                    "Cat",
+                    Animal.Species.DOG,
                     "idk",
                     12,
                     "",

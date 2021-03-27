@@ -9,7 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 
 import static java.lang.Integer.parseInt;
 import static ui.AnimalShelterApp.TOOL_AREA;
@@ -70,7 +69,7 @@ public class RegisterAnimalPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             animalToRegister.setName(nameInfoPanel.getInput());
-            animalToRegister.setSpecies(speciesInfoPanel.getInput());
+            animalToRegister.setSpecies(speciesInfoPanel.getSelection());
             animalToRegister.setBreed(breedInfoPanel.getInput());
             try {
                 animalToRegister.setAge(parseInt(ageInfoPanel.getInput()));

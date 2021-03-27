@@ -1,5 +1,6 @@
 package ui.tools.panels.registersubpanels;
 
+import model.Animal;
 import ui.AnimalShelterApp;
 import ui.tools.panels.RegisterAnimalPanel;
 
@@ -8,18 +9,22 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static model.Animal.Species.CAT;
+import static model.Animal.Species.DOG;
+
 public class SpeciesInfoPanel extends RegisterAnimalPanel {
 
-    JTextField textField;
-    private String input = "unknown";
+    JButton dog;
+    JButton cat;
+    private Animal.Species selection;
 
     public SpeciesInfoPanel(AnimalShelterApp animalShelterApp, JPanel parent) {
         super(animalShelterApp);
         createTextPanel(parent);
     }
 
-    public String getInput() {
-        return this.input;
+    public Animal.Species getSelection() {
+        return this.selection;
     }
 
     protected void createTextPanel(JPanel parent) {
@@ -27,24 +32,36 @@ public class SpeciesInfoPanel extends RegisterAnimalPanel {
         nameInfoPanel.setLayout(new GridLayout(1, 0));
         nameInfoPanel.setSize(new Dimension(0, 0));
 
-        JLabel nameInfoLabel = new JLabel("Enter animal's species: ");
+        JLabel nameInfoLabel = new JLabel("Select animal's species: ");
         nameInfoPanel.add(nameInfoLabel);
 
-        textField = new JTextField(20);
-        textField.addActionListener(new TextFieldEnterHandler(this));
-        nameInfoPanel.add(textField);
+        createSpeciesButtons(nameInfoPanel);
 
         parent.add(nameInfoPanel);
     }
 
-    private class TextFieldEnterHandler implements ActionListener {
-        public TextFieldEnterHandler(SpeciesInfoPanel nameInfoPanel) {
-        }
+    private void createSpeciesButtons(JPanel panel) {
+        dog = new JButton("Dog");
+        panel.add(dog);
+        dog.addActionListener(new DogClickHandler());
 
+        cat = new JButton("Cat");
+        panel.add(cat);
+        cat.addActionListener(new CatClickHandler());
+    }
+
+
+    private class DogClickHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            textField.setBackground(Color.LIGHT_GRAY);
-            input = textField.getText();
+            selection = DOG;
+        }
+    }
+
+    private class CatClickHandler implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            selection = CAT;
         }
     }
 }

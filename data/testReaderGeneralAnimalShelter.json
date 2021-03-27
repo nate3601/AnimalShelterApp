@@ -1,7 +1,7 @@
 {"residents": [
     {
         "dietSize": "MEDIUM_DIET",
-        "species": "Dog",
+        "species": "DOG",
         "medications": [
             {
                 "dose": "2",
@@ -21,7 +21,7 @@
     },
     {
         "dietSize": "SMALL_DIET",
-        "species": "Cat",
+        "species": "CAT",
         "medications": [],
         "name": "Marley",
         "breed": "idk",

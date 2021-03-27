@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class JsonTest {
     protected void checkAnimal(Animal animal,
                                String name,
-                               String species,
+                               Animal.Species species,
                                String breed,
                                int age,
                                String medicationNames,
