@@ -1,0 +1,49 @@
+{"residents": [
+    {
+        "dietSize": "Medium",
+        "species": "Dog",
+        "medications": [
+            {
+                "dose": "25",
+                "name": "Zoloft",
+                "frequency": "Once Daily"
+            },
+            {
+                "dose": "30",
+                "name": "THC",
+                "frequency": "Twice Daily"
+            }
+        ],
+        "name": "Tintin",
+        "breed": "lab",
+        "age": 12,
+        "activityLevel": "Low Energy"
+    },
+    {
+        "dietSize": "Small",
+        "species": "Cat",
+        "medications": [],
+        "name": "Herc",
+        "breed": "orange",
+        "age": 0,
+        "activityLevel": "High Energy"
+    },
+    {
+        "dietSize": "Large",
+        "species": "Dog",
+        "medications": [],
+        "name": "Marley",
+        "breed": "Golden Retriever",
+        "age": 4,
+        "activityLevel": "High Energy"
+    },
+    {
+        "dietSize": "Medium",
+        "species": "Cat",
+        "medications": [],
+        "name": "Ulysses",
+        "breed": "orange",
+        "age": 4,
+        "activityLevel": "Recovering"
+    }
+]}

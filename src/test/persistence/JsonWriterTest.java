@@ -22,7 +22,7 @@ public class JsonWriterTest extends JsonTest {
         testAnimal.setBreed("Black Lab");
         testAnimal.setSpecies(Animal.Species.DOG);
         testAnimal.setActivityLevel(Animal.ActivityLevel.HIGH_ENERGY);
-        testAnimal.setDietSize(Animal.DietSize.MEDIUM_DIET);
+        testAnimal.setDietSize(Animal.DietSize.LARGE_DIET);
 
         testAnimal.logMedication("testMedication1", 2, Animal.MedicationFrequency.ONCE_DAILY);
         testAnimal.logMedication("testMedication2", 5, Animal.MedicationFrequency.TWICE_DAILY);
@@ -90,12 +90,12 @@ public class JsonWriterTest extends JsonTest {
                     Animal.DietSize.LARGE_DIET);
             checkAnimal(residents.get(1),
                     "Marley",
-                    Animal.Species.DOG,
+                    Animal.Species.CAT,
                     "idk",
                     12,
                     "",
                     Animal.ActivityLevel.IMMOBILIZED,
-                    Animal.DietSize.LARGE_DIET);
+                    Animal.DietSize.SMALL_DIET);
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");

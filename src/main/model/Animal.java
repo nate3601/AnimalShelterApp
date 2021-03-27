@@ -169,8 +169,9 @@ public class Animal {
                 return ActivityLevel.RECOVERING;
             case "Low Energy":
                 return ActivityLevel.LOW_ENERGY;
-            default:
+            case "High Energy":
                 return ActivityLevel.HIGH_ENERGY;
+            default: return null;
         }
     }
 
@@ -195,8 +196,9 @@ public class Animal {
                 return DietSize.SMALL_DIET;
             case "Medium":
                 return DietSize.MEDIUM_DIET;
-            default:
+            case "Large" :
                 return DietSize.LARGE_DIET;
+            default: return null;
         }
     }
 

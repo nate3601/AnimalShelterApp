@@ -1,7 +1,7 @@
 {"residents": [
     {
-        "dietSize": "MEDIUM_DIET",
-        "species": "DOG",
+        "dietSize": "Large",
+        "species": "Dog",
         "medications": [
             {
                 "dose": "2",
@@ -20,8 +20,8 @@
         "activityLevel": "High Energy"
     },
     {
-        "dietSize": "SMALL_DIET",
-        "species": "CAT",
+        "dietSize": "Small",
+        "species": "Cat",
         "medications": [],
         "name": "Marley",
         "breed": "idk",

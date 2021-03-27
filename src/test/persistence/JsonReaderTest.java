@@ -52,12 +52,12 @@ public class JsonReaderTest extends JsonTest {
                     Animal.DietSize.LARGE_DIET);
             checkAnimal(residents.get(1),
                     "Marley",
-                    Animal.Species.DOG,
+                    Animal.Species.CAT,
                     "idk",
                     12,
                     "",
                     Animal.ActivityLevel.IMMOBILIZED,
-                    Animal.DietSize.LARGE_DIET);
+                    Animal.DietSize.SMALL_DIET);
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
