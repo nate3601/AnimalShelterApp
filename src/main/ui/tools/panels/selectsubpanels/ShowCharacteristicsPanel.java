@@ -2,10 +2,11 @@ package ui.tools.panels.selectsubpanels;
 
 import model.Animal;
 import ui.AnimalShelterApp;
-import ui.tools.panels.BackButtonClickHandler;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import static ui.AnimalShelterApp.SELECT_ANIMAL_PANEL;
 
@@ -20,6 +21,8 @@ public class ShowCharacteristicsPanel extends JPanel {
     }
 
     public void displayCharacteristics(Animal animal, JPanel cards) {
+        this.animal = animal;
+        this.cards = cards;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         JLabel title = new JLabel(animal.getName() + "'s characteristics:");
@@ -31,15 +34,29 @@ public class ShowCharacteristicsPanel extends JPanel {
         JLabel breed = new JLabel("Breed: " + animal.getBreed());
         add(breed);
         JLabel age = new JLabel("Age: " + animal.getAge());
+        add(age);
         JLabel dietSize = new JLabel("Diet Size: " + animal.convertDietSize(animal.getDietSize()));
         add(dietSize);
         JLabel activityLevel = new JLabel("Activity Level: " + animal.convertActivityLevel(animal.getActivityLevel()));
         add(activityLevel);
         JLabel medications = new JLabel("Medications: " + animal.listMedications());
+        add(medications);
 
         back = new JButton("Return to animal selection");
-        back.addActionListener(new BackButtonClickHandler(cards, SELECT_ANIMAL_PANEL));
+        back.addActionListener(new BackButtonClickHandler());
         add(back);
     }
 
+    private class BackButtonClickHandler implements ActionListener {
+        public BackButtonClickHandler() {
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            removeAll();
+
+            CardLayout cl = (CardLayout) (cards.getLayout());
+            cl.show(cards, SELECT_ANIMAL_PANEL);
+        }
+    }
 }

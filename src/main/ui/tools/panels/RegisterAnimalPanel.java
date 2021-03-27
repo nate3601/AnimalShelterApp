@@ -82,6 +82,8 @@ public class RegisterAnimalPanel extends JPanel {
 
             shelter.registerAnimal(animalToRegister);
 
+            removeAll();
+
             CardLayout cl = (CardLayout)(cards.getLayout());
             cl.show(cards, TOOL_AREA);
         }

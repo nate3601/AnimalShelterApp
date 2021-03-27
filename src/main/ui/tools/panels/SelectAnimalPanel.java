@@ -11,12 +11,18 @@ import ui.tools.panels.selectsubpanels.ShowCharacteristicsPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static ui.AnimalShelterApp.SELECT_ANIMAL_PANEL;
+import static ui.AnimalShelterApp.TOOL_AREA;
 
 public class SelectAnimalPanel extends JPanel {
     private AnimalShelterApp animalShelterApp;
     protected AnimalShelter shelter;
 
     JPanel cards;
+    JButton back;
 
     protected ShowCharacteristicsPanel showCharacteristicsPanel;
     protected LogMedicationPanel logMedicationPanel;
@@ -51,9 +57,23 @@ public class SelectAnimalPanel extends JPanel {
         }
 
         for (Animal animal : shelter.getResidents()) {
-            animalPanel = new AnimalPanel(animalShelterApp, this, animal, cards,
+            animalPanel = new AnimalPanel(animalShelterApp, this, shelter, animal, cards,
                     showCharacteristicsPanel, logMedicationPanel, adoptPanel);
             add(animalPanel);
+        }
+
+        back = new JButton("Return to home screen");
+        back.addActionListener(new BackButtonHandler());
+        add(back);
+    }
+
+    private class BackButtonHandler implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            removeAll();
+
+            CardLayout cl = (CardLayout) (cards.getLayout());
+            cl.show(cards, TOOL_AREA);
         }
     }
 }

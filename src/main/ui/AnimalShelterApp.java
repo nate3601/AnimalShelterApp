@@ -113,14 +113,17 @@ public class AnimalShelterApp {
         registerButton.addActionListener(new RegisterAnimalButtonClickHandler());
 
         SelectAnimalButton selectAnimalButton = new SelectAnimalButton(this, toolArea);
+        selectAnimalButton.setText("Select Animal");
         toolArea.add(selectAnimalButton);
         selectAnimalButton.addActionListener(new SelectAnimalButtonClickHandler());
 
         LoadButton loadShelterButton = new LoadButton(this, toolArea);
+        loadShelterButton.setText("Load Shelter");
         toolArea.add(loadShelterButton);
         loadShelterButton.addActionListener(new LoadToolClickHandler());
 
         SaveButton saveShelterButton = new SaveButton(this, toolArea);
+        saveShelterButton.setText("Save Shelter");
         toolArea.add(saveShelterButton);
         saveShelterButton.addActionListener(new SaveToolClickHandler());
 
@@ -136,6 +139,7 @@ public class AnimalShelterApp {
         public void actionPerformed(ActionEvent e) {
             CardLayout cl = (CardLayout)(cards.getLayout());
             cl.show(cards, LOAD_PANEL);
+            loadPanel.createDisplay(cards);
             loadAnimalShelter();
         }
     }
@@ -159,6 +163,7 @@ public class AnimalShelterApp {
         public void actionPerformed(ActionEvent e) {
             CardLayout cl = (CardLayout)(cards.getLayout());
             cl.show(cards, SAVE_PANEL);
+            savePanel.createDisplay(cards);
             saveAnimalShelter();
         }
     }
