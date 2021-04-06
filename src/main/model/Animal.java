@@ -114,7 +114,7 @@ public class Animal {
     //MODIFIES: this
     //EFFECTS: logs medication onto list of medications for this animal
     public void logMedication(String medication, int dose, MedicationFrequency frequency) {
-        Medication dummy = new Medication(medication, dose, frequency);
+        Medication dummy = new Medication(medication, dose, frequency, this);
         medications.add(dummy);
     }
 
