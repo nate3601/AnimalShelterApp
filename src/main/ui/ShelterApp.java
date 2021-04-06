@@ -1,5 +1,7 @@
 package ui;
 
+import exceptions.AnimalAlreadyRegisteredException;
+import exceptions.AnimalNotFoundException;
 import model.Animal;
 import model.AnimalShelter;
 import persistence.JsonWriter;
@@ -138,7 +140,11 @@ public class ShelterApp {
     //MODIFIES: this
     //EFFECTS: conducts an adoption request
     private void doAdoptAnimal(Animal selectedAnimal) {
-        shelter.adoptAnimal(selectedAnimal);
+        try {
+            shelter.adoptAnimal(selectedAnimal);
+        } catch (AnimalNotFoundException e) {
+            System.out.println("Animal not found!");
+        }
         System.out.println(selectedAnimal.getName() + " has been adopted!");
     }
 
@@ -197,7 +203,11 @@ public class ShelterApp {
         System.out.println("\t3 -> Large");
         animal.setDietSize(chooseDietSize(input.nextInt()));
 
-        shelter.registerAnimal(animal);
+        try {
+            shelter.registerAnimal(animal);
+        } catch (AnimalAlreadyRegisteredException e) {
+            System.out.println("Animal already found in shelter!");
+        }
         System.out.println(animal.getName() + " has been registered!");
     }
 

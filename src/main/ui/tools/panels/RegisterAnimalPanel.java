@@ -1,5 +1,6 @@
 package ui.tools.panels;
 
+import exceptions.AnimalAlreadyRegisteredException;
 import model.Animal;
 import model.AnimalShelter;
 import ui.AnimalShelterApp;
@@ -79,7 +80,11 @@ public class RegisterAnimalPanel extends JPanel {
             animalToRegister.setDietSize(dietSizePanel.getSelection());
             animalToRegister.setActivityLevel(activityLevelPanel.getSelection());
 
-            shelter.registerAnimal(animalToRegister);
+            try {
+                shelter.registerAnimal(animalToRegister);
+            } catch (AnimalAlreadyRegisteredException animalAlreadyRegisteredException) {
+                System.out.println("Animal is already in the shelter!");
+            }
 
             removeAll();
 

@@ -1,5 +1,6 @@
 package ui.tools.panels.selectsubpanels;
 
+import exceptions.AnimalNotFoundException;
 import model.Animal;
 import model.AnimalShelter;
 import ui.AnimalShelterApp;
@@ -28,7 +29,11 @@ public class AdoptPanel extends JPanel {
         this.animal = animal;
         this.cards = cards;
 
-        shelter.adoptAnimal(animal);
+        try {
+            shelter.adoptAnimal(animal);
+        } catch (AnimalNotFoundException e) {
+            System.out.println("This animal is not in the shelter!");
+        }
 
         JLabel adoptionMessage = new JLabel(animal.getName() + " has been adopted!");
         add(adoptionMessage);

@@ -1,5 +1,6 @@
 package persistence;
 
+import exceptions.AnimalAlreadyRegisteredException;
 import model.Animal;
 import model.AnimalShelter;
 import org.junit.jupiter.api.BeforeEach;
@@ -98,6 +99,8 @@ public class JsonWriterTest extends JsonTest {
                     Animal.DietSize.SMALL_DIET);
 
         } catch (IOException e) {
+            fail("Exception should not have been thrown");
+        } catch (AnimalAlreadyRegisteredException e) {
             fail("Exception should not have been thrown");
         }
     }

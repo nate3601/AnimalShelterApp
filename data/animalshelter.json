@@ -22,19 +22,21 @@
     {
         "dietSize": "Small",
         "species": "Cat",
-        "medications": [],
+        "medications": [
+            {
+                "dose": "30",
+                "name": "Catnip",
+                "frequency": "Twice Daily"
+            },
+            {
+                "dose": "23",
+                "name": "testmeds",
+                "frequency": "Once Daily"
+            }
+        ],
         "name": "Herc",
         "breed": "orange",
         "age": 0,
-        "activityLevel": "High Energy"
-    },
-    {
-        "dietSize": "Large",
-        "species": "Dog",
-        "medications": [],
-        "name": "Marley",
-        "breed": "Golden Retriever",
-        "age": 4,
         "activityLevel": "High Energy"
     },
     {

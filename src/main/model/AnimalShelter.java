@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.AnimalAlreadyRegisteredException;
+import exceptions.AnimalNotFoundException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -15,28 +17,24 @@ public class AnimalShelter {
         residents = new ArrayList<>();
     }
 
-    //REQUIRES: animal is not already registered
     //MODIFIES: this
-    //EFFECTS: adds a given animal to the list of animals in the shelter, returns true if successful
-    public boolean registerAnimal(Animal animal) {
-        if (!residents.contains(animal)) {
-            residents.add(animal);
-            return true;
-        } else {
-            return false;
+    //EFFECTS: adds a given animal to the list of animals in the shelter. If the animal is already found in the shelter,
+    //         throws AnimalAlreadyRegisteredException.
+    public void registerAnimal(Animal animal) throws AnimalAlreadyRegisteredException {
+        if (residents.contains(animal)) {
+            throw new AnimalAlreadyRegisteredException();
         }
+        residents.add(animal);
     }
 
-    //REQUIRES: animal is already registered in the shelter
     //MODIFIES: this
-    //EFFECTS: the animal get removed from the list of animals in the shelter, returns true if successful
-    public boolean adoptAnimal(Animal animal) {
-        if (residents.contains(animal)) {
-            residents.remove(animal);
-            return true;
-        } else {
-            return false;
+    //EFFECTS: the animal get removed from the list of animals in the shelter. If the animal is not found in the shelter
+    //         throws AnimalAlreadyRegisteredException.
+    public void adoptAnimal(Animal animal) throws AnimalNotFoundException {
+        if (!residents.contains(animal)) {
+            throw new AnimalNotFoundException();
         }
+        residents.remove(animal);
     }
 
     //EFFECTS: returns the number of residents currently in the shelter
@@ -48,7 +46,7 @@ public class AnimalShelter {
     public String listOfResidents() {
         String list = "";
         for (Animal a : residents) {
-            list =  list.concat("\n" + residents.indexOf(a) + " -> " + a.getName());
+            list = list.concat("\n" + residents.indexOf(a) + " -> " + a.getName());
         }
         return list;
     }

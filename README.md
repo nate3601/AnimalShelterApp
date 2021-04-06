@@ -27,4 +27,10 @@ specifying its characteristics
 - as a user, I want to be able to save my animal shelter to file
 - as a user, I want to be able to load my animal shelter from file
 
+## Phase 4: Task 2
+I decided to test and implement one of my classes so that it is robust.
+The class that I chose to make robust was the AnimalShelter.java class, specifically its
+methods registerAnimal() and adoptAnimal(), because these are the only ones that have a 
+requires clause. 
+
  

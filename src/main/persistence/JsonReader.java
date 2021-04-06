@@ -1,5 +1,6 @@
 package persistence;
 
+import exceptions.AnimalAlreadyRegisteredException;
 import model.Animal;
 import model.AnimalShelter;
 import model.Medication;
@@ -76,7 +77,11 @@ public class JsonReader {
         animal.setActivityLevel(animal.convertActivityLevel(jsonObject.getString("activityLevel")));
         animal.setDietSize(animal.convertDietSize(jsonObject.getString("dietSize")));
 
-        as.registerAnimal(animal);
+        try {
+            as.registerAnimal(animal);
+        } catch (AnimalAlreadyRegisteredException e) {
+            e.printStackTrace();
+        }
     }
 
     //MODIFIES: animal
