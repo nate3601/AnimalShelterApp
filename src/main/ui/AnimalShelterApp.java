@@ -40,6 +40,11 @@ public class AnimalShelterApp {
     public static final String LOG_MEDICATION_PANEL = "card for logging an animal's medication";
     public static final String ADOPT_PANEL = "card for adopting an animal";
 
+    RegisterAnimalButton registerButton;
+    SelectAnimalButton selectAnimalButton;
+    LoadButton loadShelterButton;
+    SaveButton saveShelterButton;
+
     JPanel cards;
 
     JPanel toolArea;
@@ -108,21 +113,21 @@ public class AnimalShelterApp {
     //EFFECTS: creates tool buttons
     public void createButtons() {
 
-        RegisterAnimalButton registerButton = new RegisterAnimalButton(this, toolArea);
+        registerButton = new RegisterAnimalButton(this, toolArea);
         toolArea.add(registerButton);
         registerButton.addActionListener(new RegisterAnimalButtonClickHandler());
 
-        SelectAnimalButton selectAnimalButton = new SelectAnimalButton(this, toolArea);
+        selectAnimalButton = new SelectAnimalButton(this, toolArea);
         selectAnimalButton.setText("Select Animal");
         toolArea.add(selectAnimalButton);
         selectAnimalButton.addActionListener(new SelectAnimalButtonClickHandler());
 
-        LoadButton loadShelterButton = new LoadButton(this, toolArea);
+        loadShelterButton = new LoadButton(this, toolArea);
         loadShelterButton.setText("Load Shelter");
         toolArea.add(loadShelterButton);
         loadShelterButton.addActionListener(new LoadToolClickHandler());
 
-        SaveButton saveShelterButton = new SaveButton(this, toolArea);
+        saveShelterButton = new SaveButton(this, toolArea);
         saveShelterButton.setText("Save Shelter");
         toolArea.add(saveShelterButton);
         saveShelterButton.addActionListener(new SaveToolClickHandler());

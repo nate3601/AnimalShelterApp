@@ -29,8 +29,22 @@ specifying its characteristics
 
 ## Phase 4: Task 2
 I decided to test and implement one of my classes so that it is robust.
-The class that I chose to make robust was the AnimalShelter.java class, specifically its
+The class I chose to make robust was the AnimalShelter.java class, specifically its
 methods registerAnimal() and adoptAnimal(), because these are the only ones that have a 
 requires clause. 
+
+## Phase 4: Task 3
+I believe there is a large amount of refactoring that can be done, based on my UML
+diagram. There is a high degree of coupling, specifically with the SelectAnimalPanel
+and its sub-panels (AnimalPanel, LogMedicationPanel, ShowCharacteristicsPanel, and 
+AdoptPanel). This was necessary due to the construction of the CardLayout used for
+switching between windows, as I needed separate classes for each panel that are related
+through association rather than extension/implementation in order to deal with the
+collection of cards. However, if I found another window-switching-based that did not require
+me to pass in the same card collection to each panel, I could reduce the coupling in 
+the system by allowing the sub-panels of SelectAnimalPanel to simply extend it, which
+would make it so they no longer have ot keep track of their own AnimalPanel and 
+AnimalShelterApp.  
+
 
  
