@@ -13,14 +13,17 @@ public class AgeInfoPanel extends RegisterAnimalPanel {
     JTextField textField;
     private String input = "0";
 
+    //EFFECTS: constructs an AgeInfoPanel
     public AgeInfoPanel(AnimalShelterApp animalShelterApp, JPanel parent) {
         super(animalShelterApp);
         createTextPanel(parent);
     }
 
+    //getter
     public String getInput() {
         return this.input;
     }
+
 
     protected void createTextPanel(JPanel parent) {
         JPanel nameInfoPanel = new JPanel();

@@ -66,6 +66,8 @@ public class AnimalShelterApp {
         initializeGraphics(pane);
     }
 
+    //MODIFIES: this
+    //EFFECTS: creates toolArea and panels, adds them to cards
     private void initializeGraphics(Container pane) {
 
         pane.setMinimumSize(new Dimension(WIDTH, HEIGHT));
@@ -103,6 +105,7 @@ public class AnimalShelterApp {
 
     }
 
+    //EFFECTS: initializes fields
     private void initializeFields() {
         shelter = new AnimalShelter();
         jsonWriter = new JsonWriter(JSON_STORE);
@@ -149,6 +152,8 @@ public class AnimalShelterApp {
         }
     }
 
+    //MODIFIES: shelter
+    //EFFECTS: loads shelter from file
     private void loadAnimalShelter() {
         jsonReader = new JsonReader(JSON_STORE);
         try {

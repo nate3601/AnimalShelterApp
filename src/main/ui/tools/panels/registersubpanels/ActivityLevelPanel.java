@@ -17,29 +17,35 @@ public class ActivityLevelPanel extends RegisterAnimalPanel {
 
     private Animal.ActivityLevel selection;
 
+    //EFFECTS: constructs an ActivityLevelPanel
     public ActivityLevelPanel(AnimalShelterApp animalShelterApp, JPanel parent) {
         super(animalShelterApp);
-        createDietSizePanel(parent);
+        createActivityLevelPanel(parent);
     }
 
+    //getter
     public Animal.ActivityLevel getSelection() {
         return this.selection;
     }
 
-    public void createDietSizePanel(JPanel parent) {
-        JPanel dietSizePanel = new JPanel();
-        dietSizePanel.setLayout(new GridLayout(1, 0));
-        dietSizePanel.setSize(new Dimension(0, 0));
+    //MODIFIES: parent
+    //EFFECTS: creates panel
+    public void createActivityLevelPanel(JPanel parent) {
+        JPanel activityLevelPanel = new JPanel();
+        activityLevelPanel.setLayout(new GridLayout(1, 0));
+        activityLevelPanel.setSize(new Dimension(0, 0));
 
-        JLabel dietSizeLabel = new JLabel("Choose diet size: ");
-        dietSizePanel.add(dietSizeLabel);
+        JLabel dietSizeLabel = new JLabel("Choose Activity Level: ");
+        activityLevelPanel.add(dietSizeLabel);
 
-        createDietSizeButtons(dietSizePanel);
+        createActivityLevelButtons(activityLevelPanel);
 
-        parent.add(dietSizePanel);
+        parent.add(activityLevelPanel);
     }
 
-    private void createDietSizeButtons(JPanel dietSizePanel) {
+    //MODIFIES: immobilized, recovering, lowEnergy, highEnergy, dietSizePanel
+    //EFFECTS: creates buttons
+    private void createActivityLevelButtons(JPanel dietSizePanel) {
         immobilized = new JButton("Immobilized");
         dietSizePanel.add(immobilized);
         immobilized.addActionListener(new ImmobilizedButtonClickHandler());

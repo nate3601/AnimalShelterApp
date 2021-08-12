@@ -47,5 +47,14 @@
         "breed": "orange",
         "age": 4,
         "activityLevel": "Recovering"
+    },
+    {
+        "dietSize": "Medium",
+        "species": "Dog",
+        "medications": [],
+        "name": "Minnie",
+        "breed": "Black Lab",
+        "age": 2,
+        "activityLevel": "High Energy"
     }
 ]}

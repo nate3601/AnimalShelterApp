@@ -214,7 +214,7 @@ public class Animal {
         }
     }
 
-    //EFFECTS: converts enumerated MedicationFrequency to a string
+    //EFFECTS: converts a string to an enumerated MedicationFrequency
     public MedicationFrequency convertMedicationFrequency(String mf) {
         switch (mf) {
             case "Once Daily":
@@ -224,6 +224,7 @@ public class Animal {
         }
     }
 
+    //EFFECTS: converts enumerated Species to a string
     public String convertSpecies(Species species) {
         switch (species) {
             case DOG: return "Dog";
@@ -232,11 +233,15 @@ public class Animal {
         }
     }
 
+    //EFFECTS: converts a string to an enumerated Species
     public Species convertSpecies(String species) {
         switch (species) {
-            case "Cat": return CAT;
-            case "Dog": return DOG;
-            default : return null;
+            case "Cat":
+                return CAT;
+            case "Dog":
+                return DOG;
+            default:
+                return null;
         }
     }
 

@@ -78,6 +78,8 @@ public class AnimalShelter {
         return jsonArray;
     }
 
+    // EFFECTS: returns residents
+
     public List<Animal> getResidents() {
         return this.residents;
     }

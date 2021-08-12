@@ -28,10 +28,13 @@ public class RegisterAnimalPanel extends JPanel {
     DietSizePanel dietSizePanel;
     ActivityLevelPanel activityLevelPanel;
 
+    //EFFECTS: constructs a RegisterAnimalPanel
     public RegisterAnimalPanel(AnimalShelterApp animalShelterApp) {
         this.animalShelterApp = animalShelterApp;
     }
 
+    //MODIFIES: cards, shelter
+    //EFFECTS: initializes fields
     public void processAnimalRegistration(AnimalShelter shelter, JPanel cards) {
         this.cards = cards;
         this.shelter = shelter;
@@ -39,6 +42,7 @@ public class RegisterAnimalPanel extends JPanel {
         createRegistrationTools();
     }
 
+    //EFFECTS: creates registration tools
     public void createRegistrationTools() {
         JLabel title = new JLabel("Fill out animal's information (press enter after each text input): ");
         add(title);
@@ -68,6 +72,8 @@ public class RegisterAnimalPanel extends JPanel {
 
     private class RegisterButtonClickHandler implements ActionListener {
         @Override
+        //MODIFIES: animalToRegister
+        //EFFECTS: retrieves inputs from sub-panels and sets info for animalToRegister
         public void actionPerformed(ActionEvent e) {
             animalToRegister.setName(nameInfoPanel.getInput());
             animalToRegister.setSpecies(speciesInfoPanel.getSelection());
